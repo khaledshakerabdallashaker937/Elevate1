@@ -49,7 +49,7 @@ next:(p)=>{
   this.productID = p.get('p_id')  ! ;
 console.log(this.productID);
 
-  
+     
 
 }
 
