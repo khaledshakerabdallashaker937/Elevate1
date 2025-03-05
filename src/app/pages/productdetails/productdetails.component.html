@@ -1,0 +1,47 @@
+ @if (productDetails!= null ) {
+
+    
+<section class="p-4 my-5 " >
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 items-center g-x-4 ">
+    
+        <!-- <div class="product-slider">
+    
+            <owl-carousel-o [options]="customOptions">
+    
+              
+             @for (img of productDetails.image ;track $index ) {
+                <ng-template carouselSlide>
+                    <img [src]="productDetails.image" class="h-[400px] object-contain " [alt]="productDetails.title" >
+                  </ng-template>
+             }
+              
+            
+              </owl-carousel-o>
+    
+        </div> -->
+
+        <img [src]="productDetails.image" class="h-[400px] object-contain " [alt]="productDetails.title" >
+
+
+        <div class="product-details">
+            
+    <h1> {{productDetails.title}} </h1>
+    <p class="font-black mt-2" >description:  {{productDetails.description}} </p>
+    <h3 class="text-main mt-2" >Category: {{productDetails.category}}</h3>
+    <div class="mt-4 flex flex-wrap justify-between "> 
+    <h3 class="mt-2 text-base "> <span class="text-base " >Price:</span> {{productDetails.price}} </h3>
+    <span> <i class="mt-2 rating-color fa-solid fa-star ">Rate: </i> {{productDetails.rating.rate}} </span>
+    </div>
+    
+
+        </div>
+        <div class="mt-4" >
+            <button class="btn-main w-full mx-auto block  " > +Add to cart </button>
+            </div>
+    
+    </div>
+    
+    </section>
+} 
+   

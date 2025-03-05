@@ -1,0 +1,100 @@
+<!--- main Slider -->
+<section class="p-4 my-5" >
+    <div class="container w-[90%] mx-auto">
+      <div class="flex flex-wrap ">
+<div class="w-full sm:w-full md:w-1/2 lg:w-3/4 " >  <!--- col-md-4  -->
+    <owl-carousel-o [options]="mainSliderOptions">
+        <ng-template carouselSlide> 
+            <img src="./images/img1.avif " class="h-80" >  
+          </ng-template>  
+          <ng-template carouselSlide> 
+            <img src="./images/img2.avif " class="h-80"  >  
+          </ng-template> 
+
+          <ng-template carouselSlide> 
+            <img src="./images/img3.avif " class="h-80" >  
+          </ng-template> 
+          <ng-template carouselSlide> 
+            <img src="./images/img4.avif "class="h-80" >  
+          </ng-template> 
+          <ng-template carouselSlide> 
+            <img src="./images/img5.avif "class="h-80">  
+          </ng-template> 
+        
+      </owl-carousel-o>
+</div>
+
+<div class="w-full sm:w-full md:w-1/2 lg:w-1/4 " >  <!--- col-md-4  -->
+<img src="./images/grocery-banner.png" alt="photo1" class="h-40">
+<img src="./images/grocery-banner-2.jpeg" alt="photo2"class="h-40"  >
+
+</div>
+
+      </div>
+    </div>
+</section>
+
+
+<!--- Category Slider-->
+@if (productsData != null && categoriesData !=null ) {
+
+  <section class="p-4 my-5" >
+    <div class="container w-[90%] mx-auto ">
+        <h1 class="main-title"> All Categories </h1>
+    
+      
+    <owl-carousel-o [options]="categoriesSliderOptions">
+    
+      @for(category of categoriesData ; track category._id){
+    
+          <ng-template carouselSlide >
+        <img [src]="category.image"  class="w-full h-[250px]"  [alt]="category.name" >
+      </ng-template>
+    
+    }
+        
+      </owl-carousel-o>
+    </div>
+    </section>
+    
+    
+    <!---- products Section -->
+    
+    
+    
+    
+    <section class=" rounded p-4 my-5 " >
+        <input [(ngModel)]="searchValue" type="text" placeholder="search By name ..." class="p-4 mx-auto block rounded w-[50%] placeholder-gray-500 border  "   >
+    <div class="container w-[90%] mx-auto ">
+        <h1 class="main-title " >Recommended Products: </h1>
+    <div class=" grid gap-4  grid-cols-1  sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-5 ">
+    
+        @for (product of productsData.slice (0,20) | search : searchValue; track product.id ) {
+            <div class="product cursor-pointer p-4 " [routerLink]="['/product-details' ,product.id ]" >
+        
+                <div class="mt-4" >  
+                    <img [src]="product.image" [alt]="product.title" class="h-80" >
+                </div>  
+                <div class="mt-4 h-20 " > 
+                <h2 class="text-main">{{product.category |uppercase}}</h2>  
+                <p class="font-black  ">{{product.description.split(' ').slice(0,5).join(' ')}} </p>  
+                 </div>
+                 <div class="mt-4 flex flex-wrap justify-between " > 
+                    <h3> {{product.price}} </h3>
+                     <span ><i class=" rating-color  fa-solid fa-star"></i> {{product.rating.rate}} </span>
+                     </div>
+    
+    <div class="mt-4" >
+         <button class="btn-main w-3/4 mx-auto block mt-5 ">+Add to cart</button>
+         </div>
+         </div>
+    
+        }
+       
+    
+    </div>
+    </div>
+    </section>
+
+
+}
