@@ -4,7 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { LoginComponent } from './pages/login/login.component';
 
-
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { AuthComponent } from './layouts/auth-layout/auth/auth.component';
 import { MainComponent } from './layouts/main-layout/main/main.component';
@@ -19,7 +18,7 @@ export const routes: Routes = [
 ]  },
 
 {path:'',component:MainComponent , children:[
-    {path:'home', redirectTo:'home' ,pathMatch:'full' } , 
+    {path:'', redirectTo:'home' ,pathMatch:'full' } , 
     {path:'home' ,component:HomeComponent,title:'home' },
     {path:'products' , loadComponent:()=>import('./pages/products/products.component').then((classes)=> classes.ProductsComponent ) ,title:'products' },
     {path:'brands',  loadComponent:()=>import('./pages/brands/brands.component').then((classes)=> classes.BrandsComponent ) ,title:'Brands'},
